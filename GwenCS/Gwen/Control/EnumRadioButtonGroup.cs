@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Gwen.Control
@@ -9,7 +10,7 @@ namespace Gwen.Control
     {
         public EnumRadioButtonGroup(Base parent) : base(parent)
         {
-            if (!typeof(T).IsEnum) throw new Exception("T must be an enumerated type!");
+            if (!typeof(T).GetTypeInfo().IsEnum) throw new Exception("T must be an enumerated type!");
             this.Text = typeof(T).Name;
             for (int i = 0; i < Enum.GetValues(typeof(T)).Length; i++) {
                 string name = Enum.GetNames(typeof(T))[i];

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+using Gwen.Compat;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control

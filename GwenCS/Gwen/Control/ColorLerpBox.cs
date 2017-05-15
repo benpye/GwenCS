@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using Gwen.Compat;
 using Gwen.Input;
 
 namespace Gwen.Control

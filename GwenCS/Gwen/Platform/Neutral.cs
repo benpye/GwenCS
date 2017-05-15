@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using System.Windows.Forms;
+using Gwen.Compat;
 
 namespace Gwen.Platform
 {
@@ -26,27 +26,7 @@ namespace Gwen.Platform
         /// <returns>Clipboard text.</returns>
         public static string GetClipboardText()
         {
-            // code from http://forums.getpaint.net/index.php?/topic/13712-trouble-accessing-the-clipboard/page__view__findpost__p__226140
-            string ret = String.Empty;
-            Thread staThread = new Thread(
-                () =>
-                {
-                    try
-                    {
-                        if (!Clipboard.ContainsText())
-                            return;
-                        ret = Clipboard.GetText();
-                    }
-                    catch (Exception)
-                    {
-                        return;
-                    }
-                });
-            staThread.SetApartmentState(ApartmentState.STA);
-            staThread.Start();
-            staThread.Join();
-            // at this point either you have clipboard data or an exception
-            return ret;
+            return "";
         }
 
         /// <summary>
@@ -56,25 +36,7 @@ namespace Gwen.Platform
         /// <returns>True if succeeded.</returns>
         public static bool SetClipboardText(string text)
         {
-            bool ret = false;
-            Thread staThread = new Thread(
-                () =>
-                {
-                    try
-                    {
-                        Clipboard.SetText(text);
-                        ret = true;
-                    }
-                    catch (Exception)
-                    {
-                        return;
-                    }
-                });
-            staThread.SetApartmentState(ApartmentState.STA);
-            staThread.Start();
-            staThread.Join();
-            // at this point either you have clipboard data or an exception
-            return ret;
+            return false;
         }
 
         /// <summary>
@@ -103,32 +65,7 @@ namespace Gwen.Platform
         /// <returns>True if succeeded.</returns>
         public static bool FileOpen(string title, string startPath, string extension, Action<string> callback)
         {
-            var dialog = new OpenFileDialog
-                             {
-                                 Title = title,
-                                 InitialDirectory = startPath,
-                                 DefaultExt = @"*.*",
-                                 Filter = extension,
-                                 CheckPathExists = true,
-                                 Multiselect = false
-                             };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (callback != null)
-                {
-                    callback(dialog.FileName);
-                }
-            }
-            else
-            {
-                if (callback != null)
-                {
-                    callback(String.Empty);
-                }
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -141,32 +78,7 @@ namespace Gwen.Platform
         /// <returns>True if succeeded.</returns>
         public static bool FileSave(string title, string startPath, string extension, Action<string> callback)
         {
-            var dialog = new SaveFileDialog
-            {
-                Title = title,
-                InitialDirectory = startPath,
-                DefaultExt = @"*.*",
-                Filter = extension,
-                CheckPathExists = true,
-                OverwritePrompt = true
-            };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (callback != null)
-                {
-                    callback(dialog.FileName);
-                }
-            }
-            else
-            {
-                if (callback != null)
-                {
-                    callback(String.Empty);
-                }
-                return false;
-            }
-
-            return true;
+            return false;
         }
     }
 }

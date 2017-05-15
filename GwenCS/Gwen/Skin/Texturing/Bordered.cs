@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using Gwen.Compat;
 
 namespace Gwen.Skin.Texturing
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using Gwen.Compat;
 using System.Linq;
 using System.Text;
 using Gwen.Control;

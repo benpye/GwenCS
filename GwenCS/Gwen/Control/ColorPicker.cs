@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using Gwen.Compat;
 using Gwen.ControlInternal;
 
 namespace Gwen.Control

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gwen.Compat;
 
 namespace Gwen.Control
 {
@@ -155,7 +156,7 @@ namespace Gwen.Control
         /// </summary>
         /// <param name="oldChildBounds"></param>
         /// <param name="child"></param>
-        protected override void OnChildBoundsChanged(System.Drawing.Rectangle oldChildBounds, Base child)
+        protected override void OnChildBoundsChanged(Rectangle oldChildBounds, Base child)
         {
             UpdateScrollBars();
         }
